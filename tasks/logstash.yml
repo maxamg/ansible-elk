@@ -24,6 +24,14 @@
   sudo: yes
   notify: Restart logstash
 
+- name: Logstash defaults file
+  template:
+    src=logstash-defaults.j2
+    dest=/etc/default/logstash
+    owner=root group=root mode=644
+  sudo: yes
+  notify: Restart logstash
+
 - name: Logstash pattern files
   template:
     src={{ item.src }}
